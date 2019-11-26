@@ -15,7 +15,7 @@ Python script to find regex patterns in the given URLs.
 
 ## Running the script
 
-* Provide your URLs and regular expressions for the url respectively (can be found in urls.json)
+* Provide your URLs and regular expressions for the url respectively (example can be found in urls.json)
   	* Format: key "urls" has a list of objects. You can put one regular expression in the "regex" list or multiple
    ```
    {
