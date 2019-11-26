@@ -16,7 +16,7 @@ Python script to find regex patterns in the given URLs.
 ## How to run the script
 
 * Provide your URLs and regular expressions for the url respectively (can be found in urls.json)
- - Format:
+ - Format: key "urls" has a list of objects.
  ```
  {
    "urls": [
@@ -27,8 +27,11 @@ Python script to find regex patterns in the given URLs.
           ...
         ]
     },
-    { etc 
+    { 
+     etc...
     }
   ]
 }
 ```
+* Run script `python task.py`
+* Scripts output will be saved in results.csv
