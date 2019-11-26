@@ -1,0 +1,28 @@
+{
+  "urls": [
+    {
+      "url": "https://www.postimees.ee",
+      "regex": [
+        "[Ii]lm"
+      ]
+    },
+    {
+      "url": "https://www.jython.org",
+      "regex": [
+        "Jython"
+      ]
+    },
+    {
+      "url": "https://www.cgi.com",
+      "regex": [
+        "[Tt]ech\\s+for\\s+[Gg]ood"
+      ]
+    },
+    {
+      "url": "http://olympus.realpython.org/dice",
+      "regex": [
+        "dice"
+      ]
+    }
+  ]
+}
