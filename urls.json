@@ -3,7 +3,8 @@
     {
       "url": "https://www.postimees.ee",
       "regex": [
-        "[Ii]lm"
+        "[Ii]lm",
+        "sajab"
       ]
     },
     {
@@ -13,15 +14,16 @@
       ]
     },
     {
-      "url": "https://www.cgi.com",
+      "url": "http://olympus.realpython.org/dice",
       "regex": [
-        "[Tt]ech\\s+for\\s+[Gg]ood"
+        "dice",
+        "[0-9]{4}"
       ]
     },
     {
-      "url": "http://olympus.realpython.org/dice",
+      "url": "https://www.programiz.com/python-programming/regex",
       "regex": [
-        "dice"
+        "re\\.findall"
       ]
     }
   ]
