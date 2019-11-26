@@ -70,8 +70,6 @@ def signal_handler(signum, frame):
 
 
 resource_objects = get_urls()
-analyze_sites(resource_objects)
-
 signal.signal(signal.SIGTERM, signal_handler)
 # Intercept SIGINT signal when CTRL+C is pressed
 signal.signal(signal.SIGINT, signal_handler)
