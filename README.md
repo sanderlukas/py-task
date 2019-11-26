@@ -36,7 +36,7 @@ Python script to find regex patterns in the given URLs.
   ```
   
 * Run script `python task.py`
-* Script will run continuously checking URLs after every minute (can be changed on line 83 of task.py, interval argument)
+* Script will run continuously checking URLs after every minute (can be changed on line 76 of task.py, interval argument)
 * Scripts output will be saved in results.csv
   * CSV headers url, result, timestamp, duration
   * If the check was successful the result column contains semicolon separated string of the found matches, otherwise it will contain   some error message
