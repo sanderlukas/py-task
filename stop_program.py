@@ -1,0 +1,2 @@
+class ProgramKilled(Exception):
+    pass
