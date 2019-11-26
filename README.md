@@ -17,21 +17,21 @@ Python script to find regex patterns in the given URLs.
 
 * Provide your URLs and regular expressions for the url respectively (can be found in urls.json)
  * Format: key "urls" has a list of objects. You can put one regular expression in the "regex" list or multiple
+  ```
+  {
+    "urls": [
+      {
+       "url": ...,
+       "regex": 
+         [
+           ...
+         ]
+     },
+     { 
+      etc...
+     }
+   ]
+ }
  ```
- {
-   "urls": [
-     {
-      "url": ...,
-      "regex": 
-        [
-          ...
-        ]
-    },
-    { 
-     etc...
-    }
-  ]
-}
-```
 * Run script `python task.py`
 * Scripts output will be saved in results.csv
