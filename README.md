@@ -3,9 +3,9 @@ Python script to find regex patterns in the given URLs.
 
 ## Installation guide
 
-* Download the files in the repository
+* Download or clone the files in the repository
 * Create your project directory
-* Create Python virtual environtment in your directory
+* Set up Python virtual environtment in your directory
   * Win: py -3 -m venv venv
   * Linux: python3 -m venv venv
 * Actiavate Python venv:
@@ -16,7 +16,7 @@ Python script to find regex patterns in the given URLs.
 ## How to run the script
 
 * Provide your URLs and regular expressions for the url respectively (can be found in urls.json)
- * Format: key "urls" has a list of objects. You can put one regular expression in the "regex" list or multiple
+  	* Format: key "urls" has a list of objects. You can put one regular expression in the "regex" list or multiple
   ```
   {
     "urls": [
