@@ -13,10 +13,10 @@ from stop_program import ProgramKilled
 
 
 def find_patterns(content, pattern):
-    match = ";".join(re.findall(pattern, content))
+    match = re.findall(pattern, content)
     if not match:
         return "No match"
-    return match
+    return ";".join(match)
 
 
 def save_results(url, result, duration):
