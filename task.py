@@ -1,11 +1,12 @@
 import csv
 import datetime
+import json
 import re
 import signal
 import time
 from datetime import timedelta
+
 import requests
-import json
 
 from job import Job
 from stop_program import ProgramKilled
@@ -79,4 +80,3 @@ while True:
         print("Killing program")
         job.stop()
         break
-
