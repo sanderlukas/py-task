@@ -13,38 +13,25 @@ from stop_program import ProgramKilled
 
 
 def find_patterns(content, pattern):
-    if content is not None:
-        if len(pattern) > 1:
-            for i in range(len(pattern)):
-                matches = re.findall(pattern[i], content)
-                if matches:
-                    return ";".join(matches)
-                return "No match"
-        match = ";".join(re.findall(pattern[0], content))
-        if not match:
-            return "No match"
-        return match
-    else:
-        return "No such URL"
+    match = ";".join(re.findall(pattern, content))
+    if not match:
+        return "No match"
+    return match
 
 
-def save_results(url, result):
-    with open("results.csv", "a") as results:
+def save_results(url, result, duration):
+    with open("results.csv", "a+") as results:
         results_writer = csv.writer(results, delimiter=",", lineterminator="\n")
         timestamp = str(datetime.datetime.now()).split(".")[0]
-        error = ""
-        if result == "No such URL":
-            error = result
-            result = "No match"
-        results_writer.writerow([url, result, timestamp, "1", error])
+        results_writer.writerow([url, result, timestamp, duration])
 
 
 def download_site(url, session):
     try:
         with session.get(url) as response:
             return response.content.decode("utf-8")
-    except requests.exceptions.ConnectionError as connection_error:
-        print(connection_error)
+    except requests.exceptions.ConnectionError:
+        return "Not found"
     except requests.exceptions.HTTPError as http_error:
         print(http_error)
 
@@ -52,15 +39,30 @@ def download_site(url, session):
 def analyze_sites(data):
     with requests.Session() as session:
         for resource in data["urls"]:
-            site_content = download_site(resource["url"], session)
-            regex_patterns = resource["regex"]
-            result = find_patterns(site_content, regex_patterns)
-            save_results(resource["url"], result)
+            start_time = time.time()
+            url = resource["url"]
+            site_content = download_site(url, session)
+            if site_content == "Not found":
+                duration = time.time() - start_time
+                save_results(url, site_content, duration)
+            else:
+                regex_patterns = resource["regex"]
+                if not isinstance(regex_patterns, list):
+                    duration = time.time() - start_time
+                    save_results(url, "Incorrect regex input", duration)
+                else:
+                    for i in range(len(regex_patterns)):
+                        result = find_patterns(site_content, regex_patterns[i])
+                        duration = time.time() - start_time
+                        save_results(url, result, duration)
 
 
 def get_urls():
-    with open("urls.json", "r") as urls:
-        return json.load(urls)
+    try:
+        with open("urls.json", "r") as urls:
+            return json.load(urls)
+    except FileNotFoundError as fnf_error:
+        print(fnf_error)
 
 
 def signal_handler(signum, frame):
@@ -68,9 +70,12 @@ def signal_handler(signum, frame):
 
 
 resource_objects = get_urls()
+analyze_sites(resource_objects)
+
 signal.signal(signal.SIGTERM, signal_handler)
+# Intercept SIGINT signal when CTRL+C is pressed
 signal.signal(signal.SIGINT, signal_handler)
-job = Job(interval=timedelta(seconds=10), execute=analyze_sites(resource_objects))
+job = Job(interval=timedelta(seconds=60), execute=analyze_sites(resource_objects))
 job.start()
 
 while True:
