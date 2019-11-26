@@ -13,6 +13,7 @@ Python script to find regex patterns in the given URLs.
   * Linux: `. venv/bin/activate`
 * `pip install requests` since it's the only external dependency or `pip install -r requirements.txt` in the venv
 
+
 ## Running the script
 
 * Provide your URLs and regular expressions for the url respectively (example can be found in urls.json)
