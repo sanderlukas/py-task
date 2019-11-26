@@ -8,7 +8,7 @@ Python script to find regex patterns in the given URLs.
 * Set up Python virtual environtment in your directory
   * Win: `py -3 -m venv venv`
   * Linux: `python3 -m venv venv`
-* Actiavate Python venv:
+* Activate Python venv:
   * Win: `venv\Scripts\activate`
   * Linux: `. venv/bin/activate`
 * `pip install requests` since it's the only external dependency or `pip install -r requirements.txt` in the venv
